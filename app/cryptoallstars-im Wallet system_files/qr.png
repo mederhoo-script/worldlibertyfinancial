@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blockchain Rectification</title>
+  <link rel="preload" href="font/Inter-roman.var.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+  <link rel="stylesheet" id="stm-stmicons-css" href="stmicon/stmicons.css" type="text/css" media="all">
+  <!-- <link rel="preload" href="/font/Inter-italic.var.woff2" as="font" type="font/woff2" crossorigin="anonymous"> -->
+  <link rel="stylesheet" href="font/inter.css" />
+  <script type="module" crossorigin src="assets/index.f65a54fd.js"></script>
+  <link rel="stylesheet" href="assets/index.1b85ee83.css">
+</head>
+
+<body>
+  <div class="sticky top-0" style="z-index: 8">
+    <div style="
+        height: 62px;
+        background-color: #13112b;
+        overflow: hidden;
+        box-sizing: border-box;
+        border: 1px solid #0d0d0e;
+        text-align: right;
+        line-height: 14px;
+        block-size: 62px;
+        font-size: 12px;
+        font-feature-settings: normal;
+        text-size-adjust: 100%;
+        box-shadow: inset 0 -20px 0 0 #1d2330;
+        padding: 1px;
+        padding: 0px;
+        margin: 0px;
+        width: 100%;
+      ">
+      <div style="height: 40px; padding: 0px; margin: 0px; width: 100%">
+        <iframe
+          src="https://widget.coinlib.io/widget?type=horizontal_v2&amp;theme=dark&amp;pref_coin_id=1505&amp;invert_hover="
+          width="100%" height="36px" scrolling="auto" marginwidth="0" marginheight="0" frameborder="0" border="0"
+          class="sticky top-0" style="border: 0; margin: 0; padding: 0"></iframe>
+      </div>
+      <div style="
+          color: #626b7f;
+          line-height: 14px;
+          font-weight: 400;
+          font-size: 11px;
+          box-sizing: border-box;
+          padding: 2px 6px;
+          width: 100%;
+          font-family: Verdana, Tahoma, Arial, sans-serif;
+        "></div>
+    </div>
+  </div>
+  <div id="app"></div>
+  
+</body>
+
+</html>

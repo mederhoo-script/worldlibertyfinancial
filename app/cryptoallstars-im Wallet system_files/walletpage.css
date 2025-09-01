@@ -1,0 +1,191 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800;900&amp;display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+}
+#header {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    -webkit-box-shadow: 0 10px 5px #141b29;
+    -moz-box-shadow: 0 10px 5px #141b29;
+    box-shadow: 0 -15px 25px #141b29;
+}
+.header-text {
+    /* display: flex; */
+    /* justify-content: space-between; */
+    color: #0c0e29;
+    font-weight: 900 !important;
+    text-align: center;
+}
+.header-img {
+    width: 2.5rem;
+    height: 2.5rem;
+}
+.header-text h4 {
+    font-weight: 500;
+    font-size: 1rem;
+    margin-top: 8px;
+    font-weight: 700;
+}
+.coin-section-header {
+    color: #0c0e29;
+}
+.coin-section-header h1 {
+    font-weight: 600;
+    margin-top: 2rem !important;
+}
+.coin-section-header h6 {
+    font-size: 15px;
+    font-weight: 400;
+    margin-top: 1rem;
+}
+.coin-section-footer {
+    color: #0c0e29;
+    margin-top: 1.5rem;
+}
+.coin-section-footer h6 {
+    font-size: 12px;
+    font-weight: 400;
+}
+.coin-section-icons i {
+    font-size: 12.5px;
+}
+.coin {
+    background-color: #fff;
+    border: none;
+}
+.coin-img {
+    width: 5rem;
+    height: 5rem;
+    -webkit-transition: 500ms linear;
+    transition: 500ms linear;
+}
+.coin-img:hover {
+    transform: scale(1.1);
+}
+.coin-registry {
+    margin-top: 2.5rem;
+  display: grid; 
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr; 
+  grid-column-gap: 5rem !important;
+  grid-row-gap: 1rem !important;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr; 
+  gap: 0px 0px; 
+  grid-template-areas: 
+    ". . . . . ."
+    ". . . . . ."
+    ". . . . . ."
+    ". . . . . ."
+    ". . . . . ."
+    ". . . . . ."
+    ". . . . . ."
+    ". . . . . ."
+    ". . . . . ."
+    ". . . . . ."
+    ". . . . . ."
+    ". . . . . ."; 
+}
+.coin h4 {
+    font-weight: 600;
+    color: #0c0e29;
+    font-size: 11px !important;
+    margin-top: 13px;
+}
+.wallet-address {
+    background-color: #fff;
+    color: #0c0e29;
+    border: none !important;
+    border-radius: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 3rem;
+    width: 100%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+.modal-content {
+    background-color: #0c0e29;
+}
+.modal-header {
+    border-bottom: none;
+}
+.modal-footer {
+    border-top: none;
+}
+.modal_title {
+    color: #fff; 
+    font-weight: 600; 
+    font-size: 13px;
+    word-spacing: 1px;
+}
+.btn_close {
+    border: 1px solid #fff;
+    font-weight: 500;
+    font-size: 13px;
+    color: #fff !important;
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+}
+.btn_proceed {
+    background-color: #fff; 
+    color: #0c0e29; 
+    font-weight: 500; 
+    font-size: 13px;
+}
+.btn-primary {
+    border: none !important;
+}
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+/*    background-color: #fff !important;*/
+    color: #0c0e29;
+    border: none;
+}
+small {
+    color: grey;
+    font-size: 10px;
+    position: absolute;
+    left: 15px;
+}
+.modal-body input {
+    border: 2px solid #0150b8 !important;
+}
+.modal-body input:active,
+.modal-body input:focus {
+    border: none;
+}
+
+@media screen and (max-width: 768px) {
+    .coin-registry {
+        margin-top: 2rem;
+        display: grid !important; 
+        grid-template-columns: 1fr 1fr 1fr !important;
+        grid-template-rows: 1fr 1fr 1fr;
+        grid-column-gap: 1rem !important;
+        grid-template-areas:
+        ". . ."
+        ". . ."
+    }
+    .coin-img {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+    .coin h4 {
+        font-size: 12px;
+    }
+    #header {
+        padding-top: 10px;
+    }
+    .header-img {
+        width: 2.3rem;
+        height: 2.3rem;
+    }
+    .header-text h4 {
+        margin-top: 10px;
+        font-weight: 700;
+    }
+    .wallet-address {
+        width: 100%;
+    }
+}
